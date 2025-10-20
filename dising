@@ -9,7 +9,11 @@ project/
 │   ├── Models/
 │   │   └── User.php
 │   ├── Repositories/
-│   │   └── UserRepository.php
+|   |   ├──StorageType/
+|   |   |  ├──Contracts/
+|   |   |  |   └──Storage.php (interface)
+│   |   |  └── Mysql.php
+│   ├── UserRepository.php
 │   ├── Services/
 │   │   └── UserService.php
 │   └── Views/
