@@ -18,7 +18,7 @@ spl_autoload_register(function ($class) {
 $conn = Database::connection();
 if($conn){
   $user = new User(1,"areyaFC" , "ali@gmail.com" , "123456");
-  var_dump($user);
+  $user->save();
 }
 
 

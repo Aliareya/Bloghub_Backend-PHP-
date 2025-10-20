@@ -2,10 +2,8 @@
 namespace app\repositories\storageTypes;
 use app\repositories\storageTypes\contracts\Storage;
 
-class Mysql implements Storage{
+class MongoDB implements Storage{
   public function insert(string $tableNaem, array $data){
-    echo json_encode($data);
+    echo "MongoDB";
   }
-
-
 }
