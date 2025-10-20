@@ -10,7 +10,6 @@ use app\model\User;
 spl_autoload_register(function ($class) {
   $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
   $path = str_replace('app\\', "", $class);
-  // var_dump ($path);
   require_once('../'. $path .'.php');
 
 });

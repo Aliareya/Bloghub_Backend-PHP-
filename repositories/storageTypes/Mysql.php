@@ -26,8 +26,13 @@ class Mysql implements Storage
 
     return $stmt->execute(array_values($data));
   }
+
+  public function GetAll(): array
+  {
+    return [];
+  }
   
-  
+
 
 
 
