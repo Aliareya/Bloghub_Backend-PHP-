@@ -5,24 +5,24 @@ use app\repositories\UserRepository;
 
 
 class User{
-  public $id;
-  public $username;
-  public $email;
-  public $password;
+  private $name;
+  private $username;
+  private $email;
+  private $password;
   private UserRepository $userRepository;
 
-  public function __construct($id,$username,$email,$password){ 
-    $this->id = $id;
-    $this->username = $username;
-    $this->email = $email;
-    $this->password = $password;
+  public function __construct(array $data){ 
+    $this->name = $data["name"];
+    $this->username = $data['username'];
+    $this->email = $data['email'];
+    $this->password = $data['password'];
     $this->userRepository = new UserRepository();
   }
 
   public function save(){
         return $this->userRepository->store([
-            "id" => $this->id,
-            "description" => $this->username,
+            "name" => $this->name,
+            "username" => $this->username,
             "email" => $this->email,
             "password" => $this->password,
         ]);

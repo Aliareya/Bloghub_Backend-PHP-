@@ -3,17 +3,16 @@ namespace app\repositories;
 
 use app\core\Database;
 use app\repositories\storageTypes\contracts\Storage;
-use app\repositories\storageTypes\MongoDB;
 use app\repositories\storageTypes\Mysql;
 
 class UserRepository extends BaseRepository {
     public string $tableName = "users";
-    private \PDO $connection;
+    private  $connection;
     public Storage $storage;
 
     public function __construct() {
       $this->connection = Database::connection();
-      $this->storage = new MongoDB();
+      $this->storage = new Mysql($this->connection);
     }
 
     // public function getAllUsers() {
