@@ -1,0 +1,17 @@
+{
+    "name": "ehsancomputer/blog-api",
+    "autoload": {
+        "psr-4": {
+            "Ehsancomputer\\BlogApi\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alireza",
+            "email": "aliareya2003@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
