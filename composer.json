@@ -1,8 +1,9 @@
 {
     "name": "ehsancomputer/blog-api",
+    "description": "This is a BACKEND app for a blog post site",
     "autoload": {
         "psr-4": {
-            "Ehsancomputer\\BlogApi\\": "app/"
+            "App\\": "src/"
         }
     },
     "authors": [
@@ -11,7 +12,5 @@
             "email": "aliareya2003@gmail.com"
         }
     ],
-    "require": {
-        "vlucas/phpdotenv": "^5.6"
-    }
+    "require": {}
 }

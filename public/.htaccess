@@ -1,6 +1,0 @@
-RewriteEngine On
-
-# اگر فایل یا فولدر واقعی وجود ندارد، به index.php هدایت کن
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.php [QSA,L]
