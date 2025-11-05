@@ -21,8 +21,8 @@ class User{
         $this->userRepository = $userRepository;
     }
 
-    public function save(){
-        $this->userRepository->store([
+    public function save(): bool{
+       return $this->userRepository->store([
             "name"=> $this->name,
             "username"=> $this->username,
             "role"=> $this->role,
