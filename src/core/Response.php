@@ -3,6 +3,31 @@ namespace App\Core;
 
 class Response {
 
+public function sendError(array $errors, int $status = 404): void {
+    http_response_code($status);
+    header('Content-Type: application/json; charset=UTF-8');
+
+    $messages = [];
+
+    // Flatten all error messages
+    foreach ($errors as $field => $msgs) {
+        if (is_array($msgs)) {
+            foreach ($msgs as $msg) {
+                $messages[$field] = $msg;
+            }
+        } else {
+            $messages[] = $msgs;
+        }
+    }
+
+    echo json_encode([
+        'status' => 'error',
+        'messages' => $messages
+    ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+}
+
+
+
     public function jsonSend(array $data, int $status = 200): void {
         http_response_code($status);                 
         header('Content-Type: application/json');   

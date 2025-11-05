@@ -15,8 +15,8 @@ class Medoo implements Storage {
         return $result->rowCount() > 0;
     }
 
-    public function select($tableName, $columns = '*', $where = []): array {
-        return $this->connection->select($tableName, $columns, $where);
+    public function getAll($tableName): array {
+        return $this->connection->select($tableName , "*");
     }
 
     public function update($tableName, $data, $where): bool {

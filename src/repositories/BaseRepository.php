@@ -17,4 +17,8 @@ class BaseRepository {
     public function store($data): bool{
        return $this->storage->insert($this->tableName , $data);
     }
+
+    public function getAll(): array{
+        return $this->storage->getAll($this->tableName);
+    }
 }

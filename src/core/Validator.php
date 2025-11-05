@@ -22,24 +22,24 @@ class Validator {
             foreach ($rulesArr as $rule) {
                 // Required
                 if ($rule === 'required' && $value === '') {
-                    $this->errors[$field][] = "فیلد $field الزامی است.";
+                    $this->errors[$field][] = "The $field field is required.";
                 }
 
                 // Email validation
                 if ($rule === 'email' && !filter_var($value, FILTER_VALIDATE_EMAIL)) {
-                    $this->errors[$field][] = "فیلد $field باید یک ایمیل معتبر باشد.";
+                    $this->errors[$field][] = "The $field field must be a valid email address.";
                 }
 
                 // String validation
                 if ($rule === 'string' && !is_string($value)) {
-                    $this->errors[$field][] = "فیلد $field باید رشته باشد.";
+                    $this->errors[$field][] = "The $field field must be a string.";
                 }
 
                 // Minimum length
                 if (str_starts_with($rule, 'min:')) {
                     $min = (int)substr($rule, 4);
                     if (strlen($value) < $min) {
-                        $this->errors[$field][] = "فیلد $field باید حداقل $min کاراکتر باشد.";
+                        $this->errors[$field][] = "The $field field must be at least $min characters long.";
                     }
                 }
 
@@ -47,7 +47,7 @@ class Validator {
                 if (str_starts_with($rule, 'max:')) {
                     $max = (int)substr($rule, 4);
                     if (strlen($value) > $max) {
-                        $this->errors[$field][] = "فیلد $field نباید بیشتر از $max کاراکتر باشد.";
+                        $this->errors[$field][] = "The $field field must not exceed $max characters.";
                     }
                 }
 
@@ -55,7 +55,7 @@ class Validator {
                 if (str_starts_with($rule, 'match:')) {
                     $matchField = substr($rule, 6);
                     if (($data[$matchField] ?? '') !== $value) {
-                        $this->errors[$field][] = "فیلد $field باید با $matchField مطابقت داشته باشد.";
+                        $this->errors[$field][] = "Password not match";
                     }
                 }
             }

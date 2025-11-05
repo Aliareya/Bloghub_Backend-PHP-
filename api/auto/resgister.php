@@ -25,6 +25,6 @@ if ($requist->getMethod() === "post") {
             $response->textSend("error",400);
         }
     } else {
-       var_dump($validator->errors());
+        $response->sendError($validator->errors() , 400);
     }
 }
