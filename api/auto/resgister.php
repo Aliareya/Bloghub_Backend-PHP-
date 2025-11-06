@@ -14,17 +14,28 @@ $response = new Response();
 $objUserRepository = new UserRepository();
 
 //app logic
-if ($requist->getMethod() === "post") {
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $data = $requist->json();
     $data = $requist->sanitize($data);
     if ($validator->validate($data)) {
-        $user = new User($data , $objUserRepository);
+        $user = new User($data, $objUserRepository);
         if ($user->save()) {
-            $response->textSend("success",200);
+            echo json_encode([
+                "status" => "success",
+                "message" => "Signup Successfully.",
+            ]);
         } else {
-            $response->textSend("error",400);
+            $response->textSend("error", 400);
         }
     } else {
-        $response->sendError($validator->errors() , 400);
+        echo json_encode([
+            "status" => "error",
+            "message" => $validator->errors(),
+        ]);
     }
+} else {
+    echo json_encode([
+        "status" => "error",
+        "message" => "",
+    ]);
 }

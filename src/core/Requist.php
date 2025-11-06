@@ -4,7 +4,7 @@ class Requist
 {
     public function getMethod(): string
     {
-        return strtolower($_SERVER['REQUEST_METHOD']);
+        return $_SERVER['REQUEST_METHOD'];
     }
 
     public function getPath(): string

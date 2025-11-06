@@ -19,13 +19,14 @@ class Medoo implements Storage {
         return $this->connection->select($tableName , "*");
     }
 
-    public function update($tableName, $data, $where): bool {
-        $result = $this->connection->update($tableName, $data, $where);
+    public function getByware($tableName , $ware): array{
+        return $this->connection->select($tableName , "*" , ["id"=>$ware]);
+    }
+
+    public function delete($tableName, $id): bool {
+        $result = $this->connection->delete($tableName, $id);
         return $result->rowCount() > 0;
     }
 
-    public function delete($tableName, $where): bool {
-        $result = $this->connection->delete($tableName, $where);
-        return $result->rowCount() > 0;
-    }
+
 }

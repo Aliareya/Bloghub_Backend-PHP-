@@ -21,4 +21,12 @@ class BaseRepository {
     public function getAll(): array{
         return $this->storage->getAll($this->tableName);
     }
+
+    public function getByware($id): array{
+        return $this->storage->getByware($this->tableName , $id);
+    }
+
+    public function delete($id): bool{
+        return $this->storage->delete($this->tableName , $id);
+    }
 }
