@@ -11,7 +11,7 @@ class Database {
             self::$connection = new Medoo([
                 'type' => 'mysql',
                 'host' => 'localhost',
-                'database' => 'blogpost',
+                'database' => 'blogpostoop',
                 'username' => 'root',
                 'password' => '',
                 'charset' => 'utf8mb4',

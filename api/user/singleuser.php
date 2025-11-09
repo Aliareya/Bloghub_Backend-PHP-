@@ -13,12 +13,16 @@ $response = new Response();
 $objUserRepository = new UserRepository();
 
 //app logic
-if ($requist->getMethod() === "get") {
-   $users = $objUserRepository->getByware(7);
-
-   if(count($users) > 0) {
-    $response->jsonSend($users , 200);
+if ($requist->getMethod() === "POST") {
+   $username = $requist->input("username");
+   $user = $objUserRepository->getByusername($username);
+   if(count($user) > 0) {
+      http_response_code(200);
+      echo json_encode([
+         "status" => "success",
+         "user" => $user,
+      ]);
    } else {
-    $response->sendError(["users"=>"no user"],400);
+    echo json_encode(["users"=>"no user"],400);
    }
 }

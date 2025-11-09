@@ -38,7 +38,7 @@ class Requist
     public function json(): array
     {
         $data = json_decode(file_get_contents('php://input'), true);
-        return $data ?: [];
+        return $data;
     }
 
     public function sanitize(array $data): array
@@ -54,6 +54,15 @@ class Requist
             return $_FILES[$key]; 
         }
         return null;
+    }
+
+    public function postdata(){
+        if (isset($_POST)) {
+            $data = $_POST;
+            return $data;
+        } else {
+            return null;
+        }
     }
 
 

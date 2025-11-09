@@ -69,7 +69,53 @@ class Validator {
         return empty($this->errors);
     }
 
+    public function loginVlidate($data){
+
+        if(!empty($data)){
+           if(empty($data["password"]) ||empty($data["username"])){
+             if(empty($data["password"]) || count($data["password"]) < 5 ){
+                $this->errors[] = "Password is required.";
+             }else{
+                 $this->errors[] = "Username is required.";
+             }
+           }else{
+            return empty($this->errors);
+           }
+
+        }else{
+          $this->errors[]= "All Feild is required.";
+        }
+
+    }
+
+    public function validatePost(array $data): bool {
+        // Title validation
+        if (empty($data['title'])) {
+            $this->errors[] = 'Title is required.';
+        } elseif (strlen($data['title']) < 3) {
+            $this->errors[] = 'Title must be at least 3 characters.';
+        }
+
+        // Slug validation
+        if (empty($data['slug'])) {
+            $this->errors[] = 'Slug is required.';
+        } elseif (!preg_match('/^[a-z0-9-]+$/', $data['slug'])) {
+            $this->errors[] = 'Slug can only contain lowercase letters, numbers, and hyphens.';
+        }
+
+        // Content validation
+        if (empty($data['content'])) {
+            $this->errors[] = 'Content cannot be empty.';
+        } elseif (strlen(strip_tags($data['content'])) < 50) {
+            $this->errors[] = 'Content must be at least 50 characters long.';
+        }
+
+
+        // If there are no errors, return true
+        return empty($this->errors);
+    }
+
     public function errors() {
-        return $this->errors[0];
+        return $this->errors;
     }
 }

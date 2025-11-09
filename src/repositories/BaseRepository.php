@@ -22,11 +22,35 @@ class BaseRepository {
         return $this->storage->getAll($this->tableName);
     }
 
-    public function getByware($id): array{
-        return $this->storage->getByware($this->tableName , $id);
+    public function getByusername($ware,$id="username"): array{
+        return $this->storage->getAllbyware($this->tableName , $id ,$ware );
+    }
+
+    public function where($key , $were): array{
+        return $this->storage->getByFeild($this->tableName ,$key, $were);
     }
 
     public function delete($id): bool{
         return $this->storage->delete($this->tableName , $id);
     }
+
+    public function PasswordCheck($username , $password){
+        return $this->storage->checkUserpassword($this->tableName , $username , $password);
+    }
+
+    public function getsinglePost($id){
+        return $this->storage->getPostWithUser($this->tableName , $id);
+    }
+
+    public function getalldetailsOFPost(){
+        return $this->storage->getAllPostsWithDetails();
+    }
+
+    public function getUserActivityById($id){
+        return $this->storage->getUserTotals( $id);
+    }
+
+
+ 
+
 }
