@@ -116,7 +116,6 @@ class Medoo implements Storage
 
    public function getUserTotals($userId): array
 {
-    // بررسی وجود کاربر
     $user = $this->connection->get("users", [
         "id(user_id)",
         "name(user_name)",
@@ -129,22 +128,18 @@ class Medoo implements Storage
         return [];
     }
 
-    // تعداد پست‌ها
     $totalPosts = $this->connection->count("posts", [
         "user_id" => $userId
     ]);
 
-    // تعداد کامنت‌ها
     $totalComments = $this->connection->count("comments", [
         "user_id" => $userId
     ]);
 
-    // تعداد لایک‌ها
     $totalLikes = $this->connection->count("likes", [
         "user_id" => $userId
     ]);
 
-    // جمع‌بندی داده‌ها
     $user['total_posts'] = $totalPosts;
     $user['total_comments'] = $totalComments;
     $user['total_likes'] = $totalLikes;
