@@ -51,6 +51,10 @@ class BaseRepository {
     }
 
 
+    public function getcommentdata($user_id , $post_id){
+        return $this->storage->selectcoloum($this->tableName , $user_id , $post_id);
+    }
+
  
 
 }

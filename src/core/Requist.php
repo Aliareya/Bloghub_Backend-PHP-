@@ -35,7 +35,7 @@ class Requist
         }
     }
 
-    public function json(): array
+    public function json()
     {
         $data = json_decode(file_get_contents('php://input'), true);
         return $data;

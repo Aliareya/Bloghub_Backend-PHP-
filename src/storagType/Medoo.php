@@ -36,7 +36,7 @@ class Medoo implements Storage
 
     public function delete($tableName, $id): bool
     {
-        $result = $this->connection->delete($tableName, $id);
+        $result = $this->connection->delete($tableName,["id"=>$id] );
         return $result->rowCount() > 0;
     }
 
@@ -145,7 +145,14 @@ class Medoo implements Storage
     $user['total_likes'] = $totalLikes;
 
     return $user;
-}
+   }
+
+   public function selectcoloum($tableName,$userId, $post_id): array{
+     return $this->connection->select($tableName , "*" , ["AND" => [
+            "user_id" => $userId,
+            "post_id" => $post_id
+        ]]);
+   }
 
 
 

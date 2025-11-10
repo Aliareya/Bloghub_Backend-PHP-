@@ -17,4 +17,6 @@ interface Storage{
     public function getAllPostsWithDetails():array;
 
     public function getUserTotals($id):array;
+
+    public function selectcoloum($tableName,$key ,$id):array;
 }
